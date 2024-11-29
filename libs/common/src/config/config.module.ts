@@ -10,5 +10,7 @@ import * as Joi from 'joi';
       }),
     }),
   ],
+
+  exports: [NestConfigModule],
 })
 export class ConfigModule {}
