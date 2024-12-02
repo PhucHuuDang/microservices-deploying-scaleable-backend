@@ -6,6 +6,6 @@ import { CreateUserDto } from './dto/create-user.dto';
 export class UsersService {
   constructor(private readonly usersRepository: UsersRepository) {}
   async createUser(createUserDto: CreateUserDto) {
-    return this.usersRepository.create(createUserDto);
+    return await this.usersRepository.create(createUserDto);
   }
 }
