@@ -14,5 +14,6 @@ import { UsersRepository } from './user.repository';
   ],
   controllers: [UsersController],
   providers: [UsersService, UsersRepository],
+  exports: [UsersService], //* Export the UsersService that we can use like LocalStrategy
 })
 export class UsersModule {}
