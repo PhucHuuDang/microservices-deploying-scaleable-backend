@@ -4,7 +4,9 @@ import { UsersService } from '../users/users.service';
 import { Request } from 'express';
 import { TokenPayload } from '../interfaces/token-payload.interface';
 import { ConfigService } from '@nestjs/config';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(
     configService: ConfigService,
@@ -16,7 +18,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
         (request: Request) => request?.cookies?.Authentication,
       ]),
 
-      secretOrKey: configService.get<string>('JWT_SECRET') as string,
+      secretOrKey: configService.get('JWT_SECRET'),
     });
   }
 
