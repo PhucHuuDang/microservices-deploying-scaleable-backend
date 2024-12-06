@@ -15,6 +15,6 @@ export class CreateChargeDto {
   @Type(() => CardDto)
   card: CardDto;
 
-  // @IsNumber()
+  @IsNumber()
   amount: number;
 }
