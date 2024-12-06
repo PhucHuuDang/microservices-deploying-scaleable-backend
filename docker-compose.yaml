@@ -31,7 +31,7 @@ services:
       target: development
     command: pnpm run start:dev payments
     env_file:
-      - ./apps/auth/.env
+      - ./apps/payments/.env
     ports:
       - '3003:3003'
     volumes:
