@@ -14,20 +14,37 @@ export class PaymentsService {
     },
   );
 
-  async createCharge({ card, amount }: CreateChargeDto) {
-    const paymentMethod = await this.stripe.paymentMethods.create({
-      type: 'card',
-      card,
-    });
+  // async createCharge({ card, amount }: CreateChargeDto) {
+  //   const paymentMethod = await this.stripe.paymentMethods.create({
+  //     type: 'card',
+  //     card,
+  //   });
 
-    const paymentIntent = await this.stripe.paymentIntents.create({
-      payment_method: paymentMethod.id,
+  //   const paymentIntent = await this.stripe.paymentIntents.create({
+  //     payment_method: paymentMethod.id,
+  //     amount: amount * 100,
+  //     confirm: true,
+  //     payment_method_types: ['card'],
+  //     currency: 'usd',
+  //   });
+
+  //   return paymentIntent;
+  // }
+  async createCharge({ amount }: CreateChargeDto) {
+    return await this.stripe.paymentIntents.create({
       amount: amount * 100,
-      confirm: true,
-      payment_method_types: ['card'],
-      currency: 'usd',
-    });
 
-    return paymentIntent;
+      confirm: true,
+
+      currency: 'usd',
+
+      payment_method: 'pm_card_visa',
+
+      automatic_payment_methods: {
+        allow_redirects: 'never',
+
+        enabled: true,
+      },
+    });
   }
 }
