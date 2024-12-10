@@ -27,22 +27,6 @@ export class ReservationsService {
           });
         }),
       );
-
-    // return this.paymentService
-    //   .send('create_charge', createReservationDto.charge)
-    //   .pipe(
-    //     map((res) => {
-    //       console.log({ res });
-    //       return this.reservationRepository.create({
-    //         ...createReservationDto,
-    //         invoiceId: res.id,
-    //         startDate: new Date(),
-    //         endDate: new Date(),
-    //         timeStamp: new Date(),
-    //         userId,
-    //       });
-    //     }),
-    //   );
   }
 
   async findAll() {
