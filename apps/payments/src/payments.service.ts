@@ -37,7 +37,10 @@ export class PaymentsService {
       },
     });
 
-    this.notificationService.emit('notify_email', { email });
+    this.notificationService.emit('notify_email', {
+      email,
+      text: `Your payment has completed successfully at ${new Date().toISOString()} with $${amount * 100}`,
+    });
 
     return paymentIntent;
   }
